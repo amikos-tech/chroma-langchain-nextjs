@@ -34,3 +34,20 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Running Chroma Server
+
+You can run a local Chroma server by following the instructions [here](https://medium.com/@amikostech/running-chromadb-part-1-local-server-2c61cb1c9f2c).
+
+## Importing Data
+
+You can import data into Chroma using the [Chroma Data Pipes](https://datapipes.chromadb.dev/). For example:
+
+```bash
+cdp ds-get "hf://KShivendu/dbpedia-entities-openai-1M" \
+  --doc-feature text \
+  --id-feature _id \
+  --embed-feature openai \
+  --meta-features title | \
+  cdp import "http://localhost:8000/my_collection" --create --upsert
+```
+
