@@ -9,16 +9,26 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.2.0",
+    "@langchain/community": "^0.0.26",
+    "@langchain/core": "^0.1.23",
+    "@langchain/openai": "^0.0.14",
+    "@xenova/transformers": "^2.15.0",
+    "chromadb": "^1.8.1",
+    "chromadb-default-embed": "^2.13.2",
+    "cohere-ai": "^7.7.5",
+    "dotenv": "^16.4.1",
+    "langchain": "^0.1.13",
+    "next": "14.1.0",
     "react": "^18",
-    "react-dom": "^18",
-    "next": "14.1.0"
+    "react-dom": "^18"
   },
   "devDependencies": {
-    "typescript": "^5",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
-    "eslint-config-next": "14.1.0"
+    "eslint-config-next": "14.1.0",
+    "typescript": "^5"
   }
 }
