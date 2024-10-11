@@ -1,6 +1,6 @@
 # Next.js + Chroma and LangChain: A Primer
 
-This is a simple client-side app to demonstrate the use of Chroma with LangChain in a Next.js app.
+This is a simple **client-side** app to demonstrate the use of Chroma with LangChain in a Next.js app.
 
 ## Getting Started
 
@@ -36,18 +36,28 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Running Chroma Server
 
-You can run a local Chroma server by following the instructions [here](https://medium.com/@amikostech/running-chromadb-part-1-local-server-2c61cb1c9f2c).
+Run Chroma as follows:
+
+```bash
+docker run -e CHROMA_SERVER_CORS_ALLOW_ORIGINS='["http://localhost:3000"]' --rm -v ./chroma-data:/chroma/chroma -p 8000:8000 chromadb/chroma:0.5.13 
+```
+
+> Note: The env var `CHROMA_SERVER_CORS_ALLOW_ORIGINS` is set to allow the Next.js app to access the Chroma server.
 
 ## Importing Data
 
 You can import data into Chroma using the [Chroma Data Pipes](https://datapipes.chromadb.dev/). For example:
 
 ```bash
-cdp ds-get "hf://KShivendu/dbpedia-entities-openai-1M" \
-  --doc-feature text \
-  --id-feature _id \
-  --embed-feature openai \
-  --meta-features title | \
+export OPENAI_API_KEY=sk-XXXXX
+cdp imp url https://docs.trychroma.com/ -d 3 | \
+  cdp chunk -s 512 | \
+  cdp tx emoji-clean -m | \
+  cdp embed --ef openai | \
   cdp import "http://localhost:8000/my_collection" --create --upsert
 ```
+
+## Ask a question
+
+![img.png](img.png)
 

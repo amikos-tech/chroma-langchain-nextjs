@@ -5,8 +5,9 @@ import styles from "@/styles/Home.module.css";
 
 import { OpenAI, OpenAIEmbeddings } from "@langchain/openai";
 import { createRetrievalChain } from "langchain/chains/retrieval";
+// @ts-ignore
+import { ChatPromptTemplate } from "@langchain/core/prompts";
 import { createStuffDocumentsChain } from "langchain/chains/combine_documents";
-import {ChatPromptTemplate} from "@langchain/core/prompts";
 import { Chroma } from "@langchain/community/vectorstores/chroma";
 import {useEffect, useState} from "react";
 
